@@ -6,6 +6,7 @@
     "Web server",
     "Koa"
   ],
+  "kind": "test",
   "folder": "apps",
   "icons": {
     "light": "icons/icon.svg",
