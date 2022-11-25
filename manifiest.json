@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Cencosud-X/seki-schemas/main/v1/projects/manifiestrc.schema.json",
+  "name": "Legacy Project Templates",
+  "author": {
+    "github_user": "dmunozgaete",
+    "name": "Team Seki"
+  },
+  "descriptions": {
+    "es": "Lista de plantillas para Seki con configuraciones de proyectos legadas para una migracion mas rapida al ecosistema de seki",
+    "en": "long description..."
+  },
+  "types": [
+    "api/typerc.json"
+  ]
+}
