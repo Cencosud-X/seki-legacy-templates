@@ -3,14 +3,6 @@
   "allOf": [
     {
       "properties": {
-        "kind": {
-          "type": "string",
-          "description": "Project type",
-          "enum": [
-            "test"
-          ],
-          "readOnly": true
-        },
         "settings": {
           "required": [
             "port"
