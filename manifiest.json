@@ -5,12 +5,15 @@
     "github_user": "dmunozgaete",
     "name": "Team Seki"
   },
+  "icons": {
+    "dark": "logo.svg",
+    "light": "logo.svg"
+  },
   "descriptions": {
     "es": "Lista de plantillas para Seki con configuraciones de proyectos legadas para una migracion mas rapida al ecosistema de seki",
     "en": "long description..."
   },
   "types": [
-    "api/typerc.json",
-    "test/typerc.json"
+    "api/typerc.json"
   ]
 }
