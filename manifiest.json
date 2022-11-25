@@ -10,6 +10,7 @@
     "en": "long description..."
   },
   "types": [
-    "api/typerc.json"
+    "api/typerc.json",
+    "test/typerc.json"
   ]
 }
