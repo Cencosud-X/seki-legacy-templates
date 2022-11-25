@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/Cencosud-X/seki-schemas/main/v1/projects/typerc.schema.json",
-  "name": "Api (with Koa)",
+  "name": "Api legacy (with Koa)",
   "tags": [
     "Api",
     "Web server",
