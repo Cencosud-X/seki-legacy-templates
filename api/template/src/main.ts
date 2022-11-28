@@ -1,15 +1,27 @@
-import { createServer } from "http";
-import secrets from "./config/secrets";
+import { KoaServer } from './server';
+import secrets from './config/secrets';
 
-const port = 9800;
-const server = createServer((req, res) => {
-  res.write('hello world')
-  res.end();
-})
+const closeSignals = ['SIGTERM', 'SIGINT', 'SIGUSR2', 'SIGQUIT'];
 
-console.log('')
-console.log(`${secrets.PRODUCT_NAME}: 🚀 Api is running on: http://localhost:${port}`);
+KoaServer.create(secrets.PRODUCT_NAME, 9800)
+  .boot([
+    async (ctx, next) => {
+      const start = Date.now();
+      await next();
+      const ms = Date.now() - start;
+      ctx.set('X-Response-Time', `${ms}ms`);
+    },
+  ])
+  .then((server) => server.start())
+  .then((server) => {
+    closeSignals.forEach((s) =>
+      process.on(s, async () => {
+        await server.stop();
+        console.log('App closed');
+        process.exit(0);
+      })
+    );
 
-
-server.listen(port);
-
+    console.log(`App running`);
+  })
+  .catch(console.error);
