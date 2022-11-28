@@ -6,8 +6,16 @@ module.exports = async (runner, args) => {
     await runner.execute(
       [
         `nx g @nrwl/node:application ${rc.path}`,
-        "npm i koa koa-bodyparser koa-router @koa/cors ansi-colors glob",
-        "npm i -D @types/koa @types/koa-bodyparser @types/koa-router @types/koa__cors",
+        "npm install glob",
+        "npm install ansi-colors",
+        "npm install koa",
+        "npm install koa-bodyparser",
+        "npm install koa-router",
+        "npm install @koa/cors",
+        "npm install --save-dev @types/koa",
+        "npm install --save-dev @types/koa-bodyparser",
+        "npm install --save-dev @types/koa-router",
+        "npm install --save-dev @types/koa__cors",
       ],
       {
         cwd: rc.workspace_path,

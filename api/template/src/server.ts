@@ -109,10 +109,7 @@ export class KoaServer {
 
       this.runningServer = this.koaServer.listen(this.port, () => {
         this.state = 'STARTED';
-        this.log(
-          'info',
-          `${this.productName}: 🚀 API is running on: ${c.bold(`[http(s)://host]:${this.port}`)}`
-        );
+        this.log('info', `${this.productName}: 🚀 API is running on: ${c.bold(`[http(s)://host]:${this.port}`)}`);
         return res(this);
       });
     });
@@ -125,6 +122,6 @@ export class KoaServer {
   async stop(): Promise<void> {
     this.runningServer.close();
     this.state = 'CLOSED';
-    this.log('info', `💀 closed API running on ${c.bold(`[http(s)://host]:${this.port}`)}`);
+    this.log('info', `🛌🏾 closed API running on ${c.bold(`[http(s)://host]:${this.port}`)}`);
   }
 }
