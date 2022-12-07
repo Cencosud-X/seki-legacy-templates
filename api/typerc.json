@@ -4,7 +4,8 @@
   "tags": [
     "Api",
     "Web server",
-    "Koa"
+    "Koa",
+    "beta"
   ],
   "kind": "api",
   "folder": "apps",
