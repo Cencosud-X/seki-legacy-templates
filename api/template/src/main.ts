@@ -3,7 +3,7 @@ import secrets from './config/secrets';
 
 const closeSignals = ['SIGTERM', 'SIGINT', 'SIGUSR2', 'SIGQUIT'];
 
-KoaServer.create(secrets.PRODUCT_NAME, 9800)
+KoaServer.create(secrets.PRODUCT_NAME, {{data.settings.port}})
   .boot([
     async (ctx, next) => {
       const start = Date.now();
