@@ -12,19 +12,30 @@
       ],
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "release",
       "options": {
         "outputPath": "dist/{{data.group_folder}}/{{data.path}}",
         "main": "{{data.group_folder}}/{{data.path}}/src/main.ts",
         "tsConfig": "{{data.group_folder}}/{{data.path}}/tsconfig.app.json",
-        "assets": [],
+        "assets": ["{{data.group_folder}}/{{data.path}}/src/config"],
         "webpackConfig": [
           "{{data.group_folder}}/{{data.path}}/webpack.js"
         ]
       },
       "configurations": {
-        "production": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true,
+          "inspect": true
+        },
+        "release": {
           "optimization": true,
+          "sourceMap": false,
+          "namedChunks": false,
           "extractLicenses": true,
+          "vendorChunk": true,
           "inspect": false
         }
       }
@@ -37,20 +48,35 @@
         }
       ],
       "executor": "@nrwl/node:node",
+      "defaultConfiguration": "development",
       "options": {
         "buildTarget": "{{data.path}}:build"
       },
       "configurations": {
-        "production": {
-          "buildTarget": "{{data.path}}:build:production"
+        "development": {
+          "buildTarget": "{{data.path}}:build:development"
+        },
+        "release": {
+          "buildTarget": "{{data.path}}:build:release",
+          "hmr": false
         }
       }
     },
     "lint": {
+      "dependsOn": [
+        {
+          "target": "secrets",
+          "projects": "self"
+        }
+      ],
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/{{data.path}}/**/*.ts"]
+        "lintFilePatterns": [
+          "{{data.group_folder}}/{{data.path}}/**/*.ts"
+        ]
       }
     },
     "test": {
@@ -61,9 +87,11 @@
         }
       ],
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/{{data.path}}"],
+      "outputs": [
+        "coverage/{{data.group_folder}}/{{data.path}}"
+      ],
       "options": {
-        "jestConfig": "apps/{{data.path}}/jest.config.ts",
+        "jestConfig": "{{data.group_folder}}/{{data.path}}/jest.config.ts",
         "passWithNoTests": true
       }
     },

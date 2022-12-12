@@ -1,4 +1,4 @@
-import { CustomKoaRoute, Router } from '../../../CustomKoaRoute';
+import { CustomKoaRoute, Router } from '../../CustomKoaRoute';
 
 export default class CreateUserRoute extends CustomKoaRoute {
   register(router: Router): void {
